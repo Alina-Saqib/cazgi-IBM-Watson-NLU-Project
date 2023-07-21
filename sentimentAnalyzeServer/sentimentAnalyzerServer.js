@@ -1,6 +1,7 @@
 const express = require('express');
 const app = new express();
-
+const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+const { IamAuthenticator } = require('ibm-watson/auth');
 /*This tells the server to use the client 
 folder for all static resources*/
 app.use(express.static('client'));
@@ -19,8 +20,6 @@ const api_key = process.env.API_KEY;
 const api_url = process.env.API_URL;
 
 function getNLUInstance() {
-    const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
-    const { IamAuthenticator } = require('ibm-watson/auth');
 
     const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
         version: '2021-08-01',
